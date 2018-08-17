@@ -1,0 +1,190 @@
+<div class="container">
+
+    <div class="row " style="height: 20%; background-color: black">
+        <div class="col-md-4 clo-lg-4 col-sm-5 col-xs-12">
+
+        </div>
+        <div class="col-md-4 clo-lg-4 col-sm-5 col-xs-12">
+            <h2 style="color: white; font-family: fantasy"> Games oF Thrones </h2>
+
+        </div>
+        <div class="col-md-4 clo-lg-4 col-sm-5 col-xs-12">
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="form-group">
+                <label style="color: brown; size: 10%; font-family: cursive ">Select one option</label>
+                <div>
+                    <select (change)="DDLGetValue($event.target.value)" id="category">
+                        <option *ngFor="let item of category" [value]="item">{{item}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+<div class="container" [ngSwitch]="itemValueProp">
+
+    <div class="container" *ngSwitchCase="'Books'">
+        <div class="row">
+            <div class="col-sm-12 col-lg-3 col-md-4" *ngFor="let book of bookdata; let i= index;">
+
+                <div class="card">
+                    <img class="card-img-top" src="/src/assets/gotbooks.jpg" alt="Card image cap">
+                    <div class="card-body">
+
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <h3> {{book.name}}</h3>
+                            </li>
+                            <li class="list-group-item">
+                                <h5> Authors: </h5>{{book.authors}}</li>
+                            <li class="list-group-item">
+                                <h5>Country: </h5>{{book.country}}</li>
+                        </ul>
+                        <button  mat-raised-button name="Details" class="btn btn-info" (click)
+                        ="ShowAlertDetails(book)" >Details</button>
+                    </div>
+                </div>
+
+
+
+
+               
+
+                <br/>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div *ngSwitchCase="'Houses'">
+        <div class="row">
+            <div class="col-sm-12 col-lg-3 col-md-4" *ngFor="let house of housesdata;let i= index;">
+
+
+
+
+                <div class="card">
+                    <img class="card-img-top" src="/src/assets/housegot.jpg" alt="Card image cap">
+                    <div class="card-body">
+
+                        <ul class="list-group">
+                            <li class="list-group-item ">
+                                <h3>{{house.name}}</h3>
+                            </li>
+                            <li class="list-group-item">
+                                <h5> {{house.region}}</h5>
+                            </li>
+
+                        </ul>
+
+                        <button  mat-raised-button name="Details" class="btn btn-info" (click)
+                        ="ShowAlertDetails1(house)" >Details</button>
+
+
+                    </div>
+
+
+                </div>
+                <br/>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div *ngSwitchCase="'Characters'">
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-12" *ngFor="let character of characterdata; let i = index;">
+
+                <div class="card">
+                    <img class="card-img-top" src="/src/assets/charactergot.jpg" alt="Card image cap">
+                    <div class="card-body">
+
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <h5>{{character.aliases}}</h5>
+                            </li>
+                            <li class="list-group-item">
+                                <h5>{{character.gender}}</h5>
+                            </li>
+                            <li class="list-group-item ">
+                                <h3>{{character.name}}</h3>
+                            </li>
+
+
+                        </ul>
+
+                        <button class="btn btn-info"  mat-raised-button (click)="ShowAlertDetails2(character)" >Details</button>
+                    </div>
+
+                </div>
+                <br/>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Button trigger modal -->
+    <ngx-spinner>
+        bdColor="rgba(51,51,51,0.8)"
+  size="large"
+  color="#fff"
+  type="ball-scale-single">
+    </ngx-spinner>
